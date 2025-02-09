@@ -16,6 +16,7 @@ const gameStatusDiv = document.getElementById("gameStatus");
 const playButton = document.getElementById("playButton");
 const newGameButton = document.getElementById("newGameButton");
 
+instructionsDiv.style.transitionDuration = "1s";
 function generateRandomColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
@@ -41,36 +42,46 @@ function generateColorOptions(targetColor) {
     return Array.from(options).sort(() => Math.random() - 0.5);
 }
 
+
 function startNewRound() {
-  colorBox.style.backgroundColor = 
+    colorBox.style.backgroundColor = 
     targetColor = generateRandomColor();
     options = generateColorOptions(targetColor);
     renderColorOptions();
 }
 
 function handleGuess(color) {
-    if (gameStatus === "You Lost! Game Over" || gameStatus === "You Won! Congratulations") {
-        return;
-    }
+    
     if (color === `rgb(${targetColor.r}, ${targetColor.g}, ${targetColor.b})`) {
         score += 5;
-       
-            gameStatus = "Correct!";
-            startNewRound();
+        
+        gameStatus = "Correct!😊";
+        startNewRound();
+        
         
     } else {
         score -= 2;
         
-            gameStatus = "Wrong! Try again.";
+        gameStatus = "Wrong! Try again🙄😤.";
         
     }
+    
     updateGameStatus();
 }
 
 function updateGameStatus() {
     scoreDisplay.textContent = `Score: ${score}`;
     gameStatusDiv.textContent = gameStatus;
+    gameStatusDiv.classList.remove('hidden');
+
+    setTimeout(() => {
+        gameStatusDiv.classList.add('hidden'); 
+        // gameStatusDiv.style.display="none"
+    }, 500);
 }
+
+
+
 
 function renderColorOptions() {
     colorOptionsDiv.innerHTML = ""; // Clear previous options
@@ -84,19 +95,19 @@ function renderColorOptions() {
 }
 
 function startGame() {
-    instructionsDiv.style.display = "none"; // Hide instructions
-    gameDiv.style.display = "block"; // Show game
-    score = 0; // Reset score
-    gameStatus = ""; // Reset game status
-    updateGameStatus(); // Update display
-    startNewRound(); // Start the first round
+    instructionsDiv.style.display = "none";
+    gameDiv.style.display = "block"; 
+    score = 0; 
+    gameStatus = ""; 
+    updateGameStatus(); 
+    startNewRound(); 
 }
 
 function handleNewGame() {
-    score = 0; // Reset score
-    gameStatus = ""; // Reset game status
-    updateGameStatus(); // Update display
-    startNewRound(); // Start a new round
+    score = 0; 
+    gameStatus = ""; 
+    updateGameStatus(); 
+    startNewRound();
 }
 
 // Event Listeners

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Game</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="gamePage">
+        <div id="instructions" class="gameInstruction">
+            <div class="container">
+                <h1>How to play</h1>
+                <ol> 
+                    <li>Look at the color displayed in the master box at the top</li>
+                    <li>Find its exact match among the six color options below</li>
+                    <li>Click on the option you think matches the target color</li>
+                    <li>Score points for correct guesses and try to beat your high score!</li>
+                </ol>
+                <h1>Scoring system</h1>
+                <ol>
+                    <li>Correct guess: +5 points</li>
+                    <li>Wrong guess: -2 points</li>
+                    <!-- <li>You lose once your score is -10</li>
+                    <li>You win once your score is 20</li> -->
+                </ol>
+                <button id="playButton">Play Game😋</button>
+            </div>
+        </div>
+        <div id="game" class="game" style="display: none;">
+            <h1>Color Game</h1>
+            <h2 id="score">Score: 0</h2>
+            <div id="colorBox" class="colorBox"></div>
+            <p class="gameInstructions">Guess the correct color! Find its exact match from the options</p>
+            <div class="colorCont">
+                <div id="colorOptions" class="colorOption"></div>
+            </div>
+          
+            <div id="gameStatus" class="gameStatus"></div>
+            <button id="newGameButton" class="newGame">New Game</button>
+        </div>
+    </div>
+    <script src="main.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
